@@ -1,0 +1,14 @@
+.link {
+    display: inline-flex;
+    padding: 8px;
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    color: goldenrod;
+  }
+  
+ /*  .active {
+    background-color: rgb(95, 186, 121);
+    color: #fff;
+  } */
