@@ -5,7 +5,7 @@ import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import { Suspense, lazy } from "react";
 import './App.module.css';
 
-// Асинхронно завантажуємо компоненти для оптимізації завантаження JS-коду
+
 const MoviesPage = lazy(() => import("../pages/MoviesPage/MoviesPage"));
 const MovieDetailsPage = lazy(() => import("../pages/MovieDetailsPage/MovieDetailsPage"));
 const MovieCast = lazy(() => import("./MovieCast/MovieCast"));
