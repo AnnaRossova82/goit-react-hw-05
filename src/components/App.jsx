@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-// import { useEffect, useState, useRef } from 'react';
 import Layout from "./Layout/Layout";
 import HomePage from "../pages/HomePage/HomePage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";

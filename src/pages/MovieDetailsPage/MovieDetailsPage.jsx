@@ -45,10 +45,22 @@ const MovieDetailsPage = () => {
       <h2>{movieDetails.title}</h2>
       <img src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`} alt={movieDetails.title} />
       <div>
+        <h3>Overview:</h3>
+        <p>{movieDetails.overview}</p>
+        <h3>User Score:</h3>
+        <p>{movieDetails.vote_average}</p>
+        <h3>Genres:</h3>
+        <ul>
+          {movieDetails.genres.map(genre => (
+            <li key={genre.id}>{genre.name}</li>
+          ))}
+        </ul>
         <h3>Additional Information:</h3>
         <ul>
-          <li><Link to={`/movies/${movieId}/cast`}>Cast Preview</Link></li>
-          <li><Link to={`/movies/${movieId}/reviews`}>Reviews</Link></li>
+
+<li><Link to={`cast`}>Cast Preview</Link></li>
+          <li><Link to={`reviews`}>Reviews</Link></li>
+
         </ul>
         <Outlet />
       </div>

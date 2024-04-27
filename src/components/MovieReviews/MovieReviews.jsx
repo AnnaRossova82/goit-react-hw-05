@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const apiKey = '677edfed3e4b0a50247438fda07b9881'; 
@@ -7,6 +8,7 @@ const MovieReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const { movieId } = useParams();
 
   useEffect(() => {
     async function fetchReviews() {
@@ -19,7 +21,7 @@ const MovieReviews = () => {
             Authorization: `Bearer ${apiKey}`
           }
         };
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/movie_id/reviews?language=en-US&page=1`, options);
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`, options);
         setReviews(response.data.results);
       } catch (error) {
         setError(error.message);
@@ -29,7 +31,7 @@ const MovieReviews = () => {
     }
 
     fetchReviews();
-  }, []);
+  }, [movieId]);
 
   if (isLoading) {
     return <p>Loading reviews...</p>;
