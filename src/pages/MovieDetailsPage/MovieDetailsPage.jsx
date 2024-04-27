@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, Outlet } from "react-router-dom";
 import axios from 'axios';
+import css from'./MovieDetailsPage.module.css'
 
 const apiKey = '677edfed3e4b0a50247438fda07b9881'; 
 
@@ -43,6 +44,7 @@ const MovieDetailsPage = () => {
     <div>
       <Link to="/">Go back</Link>
       <h2>{movieDetails.title}</h2>
+      <div className={css.container}>
       <img src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`} alt={movieDetails.title} />
       <div>
         <h3>Overview:</h3>
@@ -55,15 +57,20 @@ const MovieDetailsPage = () => {
             <li key={genre.id}>{genre.name}</li>
           ))}
         </ul>
+
+      </div>
+     
+      </div>
+
         <h3>Additional Information:</h3>
         <ul>
 
-<li><Link to={`cast`}>Cast Preview</Link></li>
+          <li><Link to={`cast`}>Cast Preview</Link></li>
           <li><Link to={`reviews`}>Reviews</Link></li>
 
         </ul>
         <Outlet />
-      </div>
+     
     </div>
   );
 };
