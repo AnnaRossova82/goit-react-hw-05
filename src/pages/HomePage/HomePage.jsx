@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios'; 
+import axios from 'axios';
+import MovieList from '../../components/MovieList/MovieList';
 
+const apiKey = '677edfed3e4b0a50247438fda07b9881';
 
 const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
-  const apiKey = '677edfed3e4b0a50247438fda07b9881'; 
 
   useEffect(() => {
     async function getTrendingMovies() {
@@ -18,18 +18,12 @@ const HomePage = () => {
     }
 
     getTrendingMovies();
-  }, [apiKey]); 
+  }, []); 
 
   return (
     <div>
       <h2>Trending today</h2>
-      <ul>
-        {trendingMovies.map(movie => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}?apiKey=${apiKey}`}>{movie.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <MovieList movies={trendingMovies} />
     </div>
   );
 };
