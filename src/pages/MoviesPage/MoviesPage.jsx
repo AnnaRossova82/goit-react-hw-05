@@ -55,7 +55,7 @@ const MoviesPage = () => {
       <SearchForm onSubmit={handleSearchSubmit} /> 
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      {searchResults.length > 0 && <MovieList movies={searchResults} />} {/* Використовуйте MovieList */}
+      {searchResults.length > 0 && <MovieList movies={searchResults} />} 
     </div>
   );
 };
