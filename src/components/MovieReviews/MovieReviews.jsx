@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import css from './MovieReviews.module.css'
 
 const apiKey = '677edfed3e4b0a50247438fda07b9881'; 
 
@@ -21,7 +22,7 @@ const MovieReviews = () => {
             Authorization: `Bearer ${apiKey}`
           }
         };
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`, options);
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1&api_key=${apiKey}`, options);
         setReviews(response.data.results);
       } catch (error) {
         setError(error.message);
@@ -43,15 +44,18 @@ const MovieReviews = () => {
 
   return (
     <div>
-      <h2>Movie Reviews</h2>
-      <ul>
-        {reviews.map(review => (
-          <li key={review.id}>
-            <h3>{review.author}</h3>
-            <p>{review.content}</p>
-          </li>
-        ))}
-      </ul>
+      {reviews.length === 0 ? (
+        <p>No reviews available.</p>
+      ) : (
+        <ul className={css.container}>
+          {reviews.map(review => (
+            <li key={review.id}>
+              <h3>{review.author}</h3>
+              <p>{review.content}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

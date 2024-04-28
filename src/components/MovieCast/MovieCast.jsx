@@ -18,11 +18,11 @@ const MovieCast = () => {
           method: "GET",
           headers: {
             accept: "application/json",
-            Authorization: `Bearer ${apiKey}`,
+            Authorization: `Bearer ${apiKey}`, 
           },
         };
         const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`,
+          `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US&api_key=${apiKey}`, 
           options
         );
         setCredits(response.data.cast);
@@ -46,14 +46,13 @@ const MovieCast = () => {
 
   return (
     <div>
-   
       <ul>
         {credits &&
           credits.map((actor) => (
             <li key={actor.id}>
               <div>
                 <img
-                  src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                  src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} 
                   alt={actor.name}
                 />
                 <p>{actor.name}</p>
@@ -67,4 +66,3 @@ const MovieCast = () => {
 };
 
 export default MovieCast;
-
